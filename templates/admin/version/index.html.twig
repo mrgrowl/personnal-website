@@ -1,0 +1,44 @@
+{% extends 'admin.base.html.twig' %}
+
+{% block title %}Toutes les versions
+{% endblock %}
+
+{% block body %}
+	<div class="container-fluid">
+		<h1 class="text-light mt-3" style="text-align:center">Liste des versions</h1><hr>
+
+
+		<div class="table-responsive">
+			<table class="table table-dark table-hover align-middle">
+				<thead>
+					<tr style="text-align: center">
+						<th>Projet</th>
+						<th>Version</th>
+						<th>Contenu</th>
+						<th>actions</th>
+					</tr>
+				</thead>
+				<tbody style="text-align: center">
+					{% for version in versions %}
+						<tr>
+							<td>{{ version.projet.name }}</td>
+							<td>{{ version.version }}</td>
+							<td>{{ version.description|raw }}</td>
+							<td>
+								<a class="btn btn-secondary fw-bolder" href="{{ path('version_show', {'id': version.id}) }}">VOIR</a>
+								<a class="btn btn-light fw-bolder" href="{{ path('version_edit', {'id': version.id}) }}">MODIFIER</a>
+								{{ include('admin/version/_delete_form.html.twig') }}
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="4">Aucune version n'a été trouvée.</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+
+		<a class="btn btn-secondary float-end me-3 mt-3 mb-3 fw-bolder" href="{{ path('version_new') }}">Ajouter une version</a>
+	</div>
+{% endblock %}

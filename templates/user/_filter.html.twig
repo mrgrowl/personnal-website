@@ -1,0 +1,20 @@
+{{ form_start(form) }}
+
+<div class="row">
+
+	<div class="col-md-3 border-end">
+		<h4 class="text-center">Recherche par nom</h4><hr>
+		{{ form_row(form.q) }}
+	</div>
+
+	<div class="col-md-9">
+		<h4 class="text-center">Recherche par technologie</h4><hr>
+		{{ form_row(form.technologies) }}
+	</div>
+
+	<div class="container">
+		<button type="submit" class="float-end btn btn-secondary mt-3 fw-bolder">Rechercher</button>
+	</div>
+</div>
+
+{{ form_end(form) }}

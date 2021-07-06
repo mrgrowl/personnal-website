@@ -1,0 +1,38 @@
+{{ form_start(form) }}
+
+{{ form_label(form.version,null, {
+        'label': 'Version',
+        'label_attr' : {'class' : 'form-label mt-2'}
+    }) 
+}}
+
+{{ form_widget(form.version, {
+        'attr': {'class' : 'form-control'}
+    }) 
+}}
+
+{{ form_label(form.projet,null, {
+        'label': 'Projet',
+        'label_attr' : {'class' : 'form-label mt-2'}
+    }) 
+}}
+
+{{ form_widget(form.projet, {
+        'attr': {'class' : 'form-control'}
+    }) 
+}}
+
+{{ form_label(form.description,null, {
+        'label': 'Description',
+        'label_attr' : {'class' : 'form-label mt-2'}
+    }) 
+}}
+
+{{ form_widget(form.description, {
+        'attr': {'class' : 'form-control'}
+    }) 
+}}
+
+
+<button class="btn btn btn-secondary mt-3 float-end me-3 fw-bolder">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}

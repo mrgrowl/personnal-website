@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription
+{% endblock %}
+
+
+{% block body %}
+	<div class="container-fluid">
+		<h1 class="text-light mt-3" style="text-align:center">Inscription</h1><hr>
+
+
+		{{ form_start(form) }}
+
+		<div class="alert-danger mt-2 rounded" style="text-align: center; font-weight: bold">{{ form_errors(form.username) }}</div>
+		{{ form_label(form.username,null, {
+            'label': 'Pseudonyme',
+            'label_attr' : {'class' : 'form-label mt-2'}
+        }) }}
+
+		{{ form_widget(form.username, {
+            'attr': {'class' : 'form-control'}
+        }) }}
+		<div class="alert-danger mt-2 rounded" style="text-align: center; font-weight: bold">{{ form_errors(form.email) }}</div>
+		{{ form_label(form.email,null, {
+            'label': 'Email',
+            'label_attr' : {'class' : 'form-label mt-2'}
+        }) }}
+		<div class="form-text float-end fst-italic">Minimum 4 caractères</div>
+
+		{{ form_widget(form.email, {
+            'attr': {'class' : 'form-control'}
+        }) }}
+
+
+		<div class="alert-danger mt-3 rounded" style="text-align: center; font-weight: bold">{{ form_errors(form.password) }}
+			{{ form_errors(form.confirm_password) }}</div>
+		{{ form_label(form.password,null, {
+            'label': 'Mot de passe',
+            'label_attr' : {'class' : 'form-label mt-2'}
+        }) }}
+
+		{{ form_widget(form.password, {
+            'attr': {'class' : 'form-control'}
+        }) }}
+		<div class="form-text float-end fst-italic">Minimum 8 caractères</div>
+
+
+		{{ form_label(form.confirm_password,null, {
+            'label': 'Confirmez le mot de passe',
+            'label_attr' : {'class' : 'form-label mt-2'}
+        }) }}
+
+		{{ form_widget(form.confirm_password, {
+            'attr': {'class' : 'form-control' }
+        }) }}
+
+		<button style="display: inline-block" type="submit" class="btn btn-secondary mt-3 float-end  me-3 fw-bolder">S'inscrire</button>
+		{{ form_end(form) }}
+
+	</div>
+{% endblock %}

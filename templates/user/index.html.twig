@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}мrɢrowl.fr
+{% endblock %}
+
+{% block javascripts %}
+	<script src="https://cdn.jsdelivr.net/npm/typelighterjs/typelighter.min.js"></script>
+{% endblock %}
+
+
+{% block body %}
+	<div class="container-fluid">
+		<div class="row" style="margin-top: 5%;">
+			<div class="">
+				<h1 class="text-center">Bienvenue sur le site de mrgrowl</h1>
+
+				<h2 class="text-center">Développeur
+					<span class="text-danger typeWriter" data-text='["WEB","PHP", "Symfony", "Java", "JavaScript", "HTML", "CSS"]' id="txtAnim"></span>
+				</h2>
+
+			</div>
+		</div>
+
+		<div class="row mt-5">
+			<div class="">
+				<p class="text-center fs-5">Étudiant en informatique, vous retrouverez répertorié ici mes différents projets réalisés au cours de mes formations ainsi que des projets personnels
+				</p>
+			</div>
+		</div>
+
+		<div class="text-center" style="margin-top: 3%;">
+			<a href="{{ path('projects_user') }}" class="btn btn-secondary me-3 fw-bolder">VOIR MES PROJETS</a>
+			<a href="{{ path('member_contact') }}" class="btn btn-secondary ms-3 fw-bolder">ME CONTACTER</a>
+		</div>
+
+	</div>
+{% endblock %}

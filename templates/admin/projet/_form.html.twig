@@ -1,0 +1,61 @@
+{{ form_start(form) }}
+
+<div class="alert-danger" style="text-align: center; font-weight: bold">
+	{{ form_errors(form) }}
+</div>
+
+
+{{ form_label(form.name,null, {
+        'label': 'Nom',
+        'label_attr' : {'class' : 'form-label mt-2'}
+    }) }}
+
+{{ form_widget(form.name, {
+        'attr': {'class' : 'form-control'}
+    }) }}
+<div class="form-text float-end fst-italic">Minimum 5 caractères</div>
+
+
+{{ form_label(form.git,null, {
+        'label': 'Lien du Code Source',
+        'label_attr' : {'class' : 'form-label mt-2'}
+    }) }}
+
+{{ form_widget(form.git, {
+        'attr': {'class' : 'form-control'}
+    }) 
+}}
+<div class="form-text float-end fst-italic">Facultatif</div>
+
+
+{{ form_label(form.resume,null, {
+        'label': 'Résumé ',
+        'label_attr' : {'class' : 'form-label mt-2'}
+    }) }}
+
+{{ form_widget(form.resume, {
+        'attr': {'class' : 'form-control'}
+    }) }}
+
+{{ form_label(form.description,null, {
+        'label': 'Description',
+        'label_attr' : {'class' : 'form-label mt-2'}
+    }) }}
+
+{{ form_widget(form.description, {
+        'attr': {'class' : 'form-control'}
+    }) }}
+
+
+{{ form_label(form.technologies,null, {
+        'label': 'Technologies utilisées',
+        'label_attr' : {'class' : 'form-label ml-1 me-2'}
+    }) }}
+
+{{ form_widget(form.technologies, {
+        'attr': {'class' : 'me-3 form-control'}
+    }) }}
+
+
+<button class="btn btn-secondary mt-3 float-end me-3 fw-bolder">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}

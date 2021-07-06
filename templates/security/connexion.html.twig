@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion
+{% endblock %}
+
+{% block body %}
+	<div class="container-fluid">
+		<h1 class="text-light mt-3" style="text-align:center">Connexion</h1><hr>
+
+
+		<div class="alert alert-danger fw-bolder text-center" role="alert">
+			<i class="bi bi-exclamation-octagon-fill"></i>
+			Seul les administrateurs ont accès à la connexion
+			<i class="bi bi-exclamation-octagon-fill"></i>
+		</div>
+
+
+		<form method="post" action="{{ path('security_login') }}">
+			<div class="form-group">
+				<label class="form-label" for="username">Identifiant</label>
+				<input name="_username" required type="text" class="form-control">
+			</div>
+
+			<div class="form-group mt-3">
+				<label class="form-label" for="username">Mot de passe</label>
+				<input name="_password" required type="password" class="form-control">
+			</div>
+
+			<div class="form-group">
+				<button class="btn btn-secondary float-end mt-3 me-3">Se connecter</button>
+			</div>
+
+
+		</form>
+
+	</div>
+
+{% endblock %}

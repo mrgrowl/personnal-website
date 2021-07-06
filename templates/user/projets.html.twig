@@ -1,0 +1,107 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}мrɢrowl - Projets
+{% endblock %}
+
+
+{% block body %}
+	<h1 class="text-light mt-3" style="text-align: center">Mes projets ({{ totalProjets }})</h1><hr>
+
+	{#
+		<div class="container-fluid">
+			<button style="width: 100%" class="btn btn-secondary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Filtrer les projets</button>
+	
+			<div class="collapse" id="collapseExample">
+				{% include 'user/_filter.html.twig' with {form : form} only %}<hr>
+			</div>
+	
+		</div>
+		#}
+
+	<div class="container-fluid">
+		<div class="container">
+			<div class="row mt-3">
+				{% for projet in projets%}
+					<div class="col-md-4">
+						<div class="card bg-dark col-md-12 mt-3 mb-3 border border-light rounded" style="text-align: center">
+							<h5 class="card-header bg-dark">{{projet.name}}</h5>
+							<div class="card-body mt-3 mb-3">
+								<p class="card-text">{{projet.resume}}</p>
+							</div>
+							<ul class="list-group list-group-flush">
+
+								<li class="list-group-item bg-dark mt-3 text-light pb-4 border-light">
+									<span class="fw-bolder">Dernière version</span><br>
+									{% if projet.versions|length > 0 %}
+										<span class="badge bg-light text-dark mt-3">{{projet.versions|last}}</span>
+									{% else %}
+										<span class="badge bg-light text-dark mt-3">Aucune</span>
+									{% endif %}
+								</li>
+
+								<li style="border-bottom: 0" class="list-group-item bg-dark mt-3 text-light border-light">
+									<span class="fw-bolder">Technologies utilisées</span><br>
+									{% for technologie in projet.technologies %}
+										<span class="badge bg-light text-dark mt-3">{{technologie.name}}</span>
+									{% else %}
+										<span class="badge bg-light text-dark mt-3">Aucune</span>
+									{% endfor %}
+								</li>
+								<div class="card-footer mt-3 bg-dark border-light">
+									<a class="btn btn-secondary" href="{{ path('projet_show', {'slug': projet.slug}) }}">En savoir plus</a>
+								</div>
+							</ul>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+
+			<nav style="text-align: center">
+				<ul class="pagination justify-content-center mt-3">
+
+					{% if page != 1 %}
+						<li class="page-item">
+							<a class="page-link bg-dark text-light" href="{{ path('projects_user', {page: page - 1}) }}">
+								<i class="bi bi-skip-backward-fill"></i>
+							</a>
+						</li>
+					{% else %}
+						<li class="page-item disabled">
+							<a class="page-link bg-dark text-light" href="{{ path('projects_user', {page: page }) }}">
+								<i class="bi bi-skip-backward-fill"></i>
+							</a>
+						</li>
+					{% endif %}
+
+
+					{% for i in 1.. ((totalProjets / 6) | round(0,'ceil')) %}
+						{% if i == page %}
+							<li class="page-item active">
+								<a class="page-link bg-dark text-light" href="{{ path('projects_user', {page: i}) }}">{{i}}</a>
+							</li>
+						{% else %}
+							<li class="page-item">
+								<a class="page-link bg-dark text-light" href="{{ path('projects_user', {page: i}) }}">{{i}}</a>
+							</li>
+						{% endif %}
+					{% endfor %}
+
+					{% if page != ((totalProjets / 6) | round(0,'ceil')) %}
+						<li class="page-item">
+							<a class="page-link bg-dark text-light" href="{{ path('projects_user', {page: page + 1}) }}">
+								<i class="bi bi-skip-forward-fill"></i>
+							</a>
+						</li>
+					{% else %}
+						<li class="page-item disabled">
+							<a class="page-link bg-dark text-light" href="{{ path('projects_user', {page: page + 1}) }}">
+								<i class="bi bi-skip-forward-fill"></i>
+							</a>
+						</li>
+					{% endif %}
+				</ul>
+			</nav>
+
+		</div>
+	</div>
+{% endblock %}

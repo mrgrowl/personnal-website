@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ projet.name }}
+{% endblock %}
+
+{% block body %}
+	<div class="container-fluid">
+
+		<div class="card bg-dark mt-3">
+
+			<div class="card-body">
+				<h4 class="card-title text-center mb-5 mt-3">{{projet.name}}</h4><hr>
+
+				<h6 class="mt-3" style="text-align: center">Description</h6><hr>
+				<p class="card-text">{{projet.description|raw}}</p><hr>
+
+				<h6 style="text-align: center">Versions</h6><hr>
+
+				<div class="accordion accordion-flush" id="accordionFlushExample">
+					{% for version in projet.versions|reverse %}
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="flush-headingOne">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{version.id}}" aria-expanded="false" aria-controls="flush-collapse{{version.id}}">
+									{{version.version}}
+								</button>
+							</h2>
+							<div id="flush-collapse{{version.id}}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{version.id}}" data-bs-parent="#accordionFlushExample">
+								<div class="accordion-body bg-dark">{{version.description|raw}}</div>
+							</div>
+						</div>
+					{% else %}
+						<p class="pt-3 pb-3 text-center">
+							<span class="badge bg-light text-dark">Aucune version renseignée</span>
+						</p>
+					{% endfor %}
+				</div>
+
+				<hr><h6 class="mb-3 mt-3 " style="text-align: center">Technologies utilisées :</h6><hr>
+				<div class="d-flex justify-content-center">
+					{% for tech in technologies %}
+						<span class="badge bg-light text-dark ms-3 me-3">{{ tech.name }}</span>
+					{% else %}
+						<span class="badge bg-light text-dark">Aucune technologie renseignée</span>
+					{% endfor %}
+				</div>
+
+			</div>
+		</div>
+
+
+		<a class="btn btn-secondary mt-3 ms-3" href="{{ path('projects_user') }}">Retour</a>
+		{% if is_granted('ROLE_ADMIN') %}
+			<a class="btn btn-secondary float-end mt-3 me-3" href="{{ path('projet_edit', {'id': projet.id}) }}">Modifier</a>
+		{% endif %}
+
+		{% if projet.git %}
+			<a class="btn btn-secondary float-end mt-3 me-3" href="{{projet.git}}" target="_blank">Voir le code source</a>
+		{% else %}
+			<a class="btn btn-secondary float-end mt-3 me-3 disabled" style="cursor: not-allowed;" href="#">Voir le code source</a>
+		{% endif %}
+
+
+	</div>
+{% endblock %}

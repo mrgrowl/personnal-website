@@ -1,0 +1,16 @@
+{{ form_start(form) }}
+<div class="alert-danger" style="text-align: center; font-weight: bold">
+	{{ form_errors(form) }}
+</div>
+
+{{ form_label(form.name,null, {
+        'label': 'Nom',
+        'label_attr' : {'class' : 'form-label mt-2'}
+    }) }}
+
+{{ form_widget(form.name, {
+        'attr': {'class' : 'form-control'}
+    }) }}
+
+<button class="btn btn-secondary mt-3 float-end me-3 fw-bolder">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}

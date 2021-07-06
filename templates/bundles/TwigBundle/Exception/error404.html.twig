@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	мrɢrowl.fr - Contact
+{% endblock %}
+
+
+{% block body %}
+	<div class="container-fluid text-center user-select-none">
+		<h1 class="text-light mt-3 text-center">Une erreur s'est produite !
+		</h1><hr>
+
+
+		<img style="max-width: 400px;" class="img-fluid" src="{{ asset('img/error-404.png') }}"></img>
+
+	<br>
+	<a class="btn btn-secondary mt-3 mb-3 fw-bolder" href="{{ path('member_index') }}">Revenir en lieu sûr</a>
+
+
+</div>{% endblock %}

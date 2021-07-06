@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}мrɢrowl.fr - Contact
+{% endblock %}
+
+
+{% block body %}
+	<div class="container-fluid">
+		<h1 class="text-light mt-3 text-center">Me contacter</h1><hr>
+
+		{% for message in app.flashes('error')%}
+			<div class="alert alert-danger fw-bolder text-center" role="alert">
+				{{message}}
+			</div>
+		{% endfor %}
+		{% for message in app.flashes('success')%}
+			<div class="alert alert-success fw-bolder text-center" role="alert">
+				{{message}}
+			</div>
+		{% endfor %}
+
+		{{ form_start(form) }}
+
+		{{ form_label(form.nom,null, {
+				'label': 'Nom : ',
+				'label_attr' : {'class' : 'form-label mt-2'}
+			}) }}
+
+		{{ form_widget(form.nom, {
+				'attr': {'class' : 'form-control'}
+			}) }}
+
+		{{ form_label(form.email,null, {
+				'label': 'Email :',
+				'label_attr' : {'class' : 'form-label mt-2'}
+			}) }}
+
+		{{ form_widget(form.email, {
+				'attr': {'class' : 'form-control'}
+			}) }}
+
+		{{ form_label(form.message,null, {
+				'label': 'Message :',
+				'label_attr' : {'class' : 'form-label mt-2'}
+			}) }}
+
+		{{ form_widget(form.message, {
+				'attr': {'class' : 'form-control'}
+			}) }}
+
+
+		<button type="submit" class="btn btn-secondary fw-bolder float-end mt-3 me-3">Envoyer</button>
+		{{ form_end(form) }}
+
+
+	</div>
+{% endblock %}

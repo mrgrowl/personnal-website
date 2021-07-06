@@ -1,0 +1,15 @@
+{% extends 'admin.base.html.twig' %}
+
+{% block title %}Modifier une version
+{% endblock %}
+
+{% block body %}
+	<div class="container-fluid">
+		<h1 class="text-light mt-3 text-center">Modifier une version</h1><hr>
+
+		{{ include('admin/version/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+
+		<a class="btn btn-secondary mt-3 ms-3" href="{{ path('version_index') }}">Retour</a>
+
+	</div>
+{% endblock %}
