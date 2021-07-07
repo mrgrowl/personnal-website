@@ -49,7 +49,7 @@
 		</div>
 
 
-		<a class="btn btn-secondary mt-3 ms-3" href="{{ path('projects_user') }}">Retour</a>
+		<a class="btn btn-secondary mt-3 ms-3 mb-3" href="{{ path('projects_user') }}">Retour</a>
 		{% if is_granted('ROLE_ADMIN') %}
 			<a class="btn btn-secondary float-end mt-3 me-3" href="{{ path('projet_edit', {'id': projet.id}) }}">Modifier</a>
 		{% endif %}

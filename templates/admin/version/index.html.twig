@@ -23,7 +23,7 @@
 						<tr>
 							<td>{{ version.projet.name }}</td>
 							<td>{{ version.version }}</td>
-							<td>{{ version.description|raw }}</td>
+							<td>{{ version.description|slice(0,100)|raw }}</td>
 							<td>
 								<a class="btn btn-secondary fw-bolder" href="{{ path('version_show', {'id': version.id}) }}">VOIR</a>
 								<a class="btn btn-light fw-bolder" href="{{ path('version_edit', {'id': version.id}) }}">MODIFIER</a>
