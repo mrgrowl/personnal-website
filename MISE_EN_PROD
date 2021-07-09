@@ -1,3 +1,0 @@
-1) changer mail to ... dans le controller de contact
-2)Changer l'addresse smtp des mails dans .env (MAILER_URL)
-3) changer la variable .env en prod
