@@ -3,6 +3,9 @@
 namespace App\Controller;
 
 use App\Form\ContactType;
+use Swift_Mailer;
+use Swift_Message;
+use Swift_SmtpTransport;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,7 +17,7 @@ class ContactController extends AbstractController
     /**
      * @Route("/contact", name="member_contact")
      */
-    public function contact(Request $request, \Swift_Mailer $mailer): Response
+    public function contact(Request $request): Response
     {
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
@@ -22,7 +25,15 @@ class ContactController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $contact = $form->getData();
 
-            $message = (new \Swift_Message('Message via mrgrowl.fr'))
+            //Config smtp
+            $transport = (new Swift_SmtpTransport('mail.mrgrowl.com', 465))
+                ->setUsername('contact@mrgrowl.com')
+                ->setPassword("Mekki2001/");
+
+
+            $mailer = new Swift_Mailer($transport);
+
+            $message = (new Swift_Message('Message via mrgrowl.fr'))
                 ->setFrom($contact['email'])
                 ->setTo('contact@mrgrowl.com')
                 ->setBody(
@@ -32,6 +43,7 @@ class ContactController extends AbstractController
                     ),
                     'text/html'
                 );
+
 
             $mailer->send($message);
 
