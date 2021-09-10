@@ -26,7 +26,7 @@ class ContactController extends AbstractController
             $contact = $form->getData();
 
             //Config smtp
-            $transport = (new Swift_SmtpTransport('mail.mrgrowl.com', 465))
+            $transport = (new Swift_SmtpTransport('mail.mrgrowl.com', 26))
                 ->setUsername('contact@mrgrowl.com')
                 ->setPassword("Mekki2001/");
 
@@ -47,7 +47,7 @@ class ContactController extends AbstractController
 
             $mailer->send($message);
 
-            $this->addFlash('success', 'Le mail a bien été envoyé !');
+            $this->addFlash('success', 'Votre message à bien été transmis !');
             return $this->redirectToRoute('member_contact');
         }
 
