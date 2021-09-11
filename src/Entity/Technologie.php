@@ -29,6 +29,11 @@ class Technologie
      */
     private $projets;
 
+    /**
+     * @ORM\Column(type="string", length=12)
+     */
+    private $color;
+
 
 
     public function __construct()
@@ -83,5 +88,17 @@ class Technologie
     public function __toString()
     {
         return $this->getName();
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(string $color): self
+    {
+        $this->color = $color;
+
+        return $this;
     }
 }

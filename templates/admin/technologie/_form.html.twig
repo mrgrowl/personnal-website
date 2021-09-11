@@ -12,5 +12,14 @@
         'attr': {'class' : 'form-control'}
     }) }}
 
+{{ form_label(form.color, null, {
+        'label': 'Couleur',
+        'label_attr' : {'class' : 'form-label mt-2'}
+    }) }}
+
+{{ form_widget(form.color, {
+        'attr': {'class' : 'form-control'}
+    }) }}
+
 <button class="btn btn-secondary mt-3 float-end me-3 fw-bolder">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}

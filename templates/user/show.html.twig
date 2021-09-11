@@ -39,7 +39,7 @@
 				<hr><h6 class="mb-3 mt-3 " style="text-align: center">Technologies utilisées :</h6><hr>
 				<div class="d-flex justify-content-center">
 					{% for tech in technologies %}
-						<span class="badge bg-light text-dark ms-3 me-3">{{ tech.name }}</span>
+						<span class="badge text-dark ms-3 me-3" style="background-color: {{ tech.color }}">{{ tech.name }}</span>
 					{% else %}
 						<span class="badge bg-light text-dark">Aucune technologie renseignée</span>
 					{% endfor %}

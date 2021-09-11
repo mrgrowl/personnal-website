@@ -8,15 +8,15 @@
 	<h1 class="text-light mt-3" style="text-align: center">Mes projets ({{ totalProjets }})</h1><hr>
 
 	{#
-		<div class="container-fluid">
-			<button style="width: 100%" class="btn btn-secondary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Filtrer les projets</button>
-	
-			<div class="collapse" id="collapseExample">
-				{% include 'user/_filter.html.twig' with {form : form} only %}<hr>
-			</div>
-	
-		</div>
-		#}
+				<div class="container-fluid">
+					<button style="width: 100%" class="btn btn-secondary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Filtrer les projets</button>
+			
+					<div class="collapse" id="collapseExample">
+						{% include 'user/_filter.html.twig' with {form : form} only %}<hr>
+					</div>
+			
+				</div>
+				#}
 
 	<div class="container-fluid">
 		<div class="container">
@@ -42,7 +42,7 @@
 								<li style="border-bottom: 0" class="list-group-item bg-dark mt-3 text-light border-light">
 									<span class="fw-bolder">Technologies utilisées</span><br>
 									{% for technologie in projet.technologies %}
-										<span class="badge bg-light text-dark mt-3">{{technologie.name}}</span>
+										<span class="badge text-dark mt-3" style="background-color: {{ technologie.color }};">{{technologie.name}}</span>
 									{% else %}
 										<span class="badge bg-light text-dark mt-3">Aucune</span>
 									{% endfor %}

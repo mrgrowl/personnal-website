@@ -13,6 +13,7 @@
 				<thead>
 					<tr style="text-align: center">
 						<th>Nom</th>
+						<th>Couleur</th>
 						<th></th>
 					</tr>
 				</thead>
@@ -20,6 +21,9 @@
 					{% for technologie in technologies %}
 						<tr>
 							<td>{{ technologie.name }}</td>
+							<td>
+								<span class="badge text-dark mt-3" style="background-color: {{ technologie.color }} ;">_</span>
+							</td>
 							<td>
 								<a class="btn btn-secondary fw-bolder" href="{{ path('technologie_edit', {'id': technologie.id}) }}">MODIFIER</a>
 								{{ include('admin/technologie/_delete_form.html.twig') }}
